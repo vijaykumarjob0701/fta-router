@@ -1,0 +1,16 @@
+{
+  "disclaimer": "Test unit rates only.",
+  "router_overhead": {"cost": 0.01, "latency_ms": 10.0},
+  "actions": {
+    "answer_small": {"cost": 1.0, "latency_ms": 100.0, "large_call": false},
+    "rag": {"cost": 2.0, "latency_ms": 200.0, "large_call": false},
+    "tools": {"cost": 3.0, "latency_ms": 300.0, "large_call": false},
+    "escalate_large": {"cost": 10.0, "latency_ms": 1000.0, "large_call": true}
+  },
+  "combinations": {
+    "rag+tools": {"cost": 4.0, "latency_ms": 400.0, "large_call": false},
+    "escalate_large+rag": {"cost": 12.0, "latency_ms": 1200.0, "large_call": true},
+    "escalate_large+tools": {"cost": 13.0, "latency_ms": 1300.0, "large_call": true},
+    "escalate_large+rag+tools": {"cost": 15.0, "latency_ms": 1500.0, "large_call": true}
+  }
+}

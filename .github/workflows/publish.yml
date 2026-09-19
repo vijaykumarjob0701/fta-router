@@ -1,0 +1,58 @@
+# Trusted Publisher / OIDC upload. This workflow does not store a PyPI token.
+#
+# Before the first tag-triggered publish will succeed, the project owner
+# (Vijay Kumar) must create the PyPI project and link this GitHub repository
+# as a Trusted Publisher:
+#   https://docs.pypi.org/trusted-publishers/adding-a-publisher/
+#
+# Suggested publisher fields:
+#   Owner:      vijaykumarjob0701
+#   Repository: fta-router
+#   Workflow:   publish.yml
+#   Environment: pypi
+#
+# Do not add a PYPI_API_TOKEN secret to this repository unless you
+# intentionally choose token publishing instead of Trusted Publishing.
+
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build distributions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+
+  publish:
+    name: Upload to PyPI
+    needs: [build]
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/fta-router
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Publish distribution to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
