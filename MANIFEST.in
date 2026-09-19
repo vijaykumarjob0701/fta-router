@@ -1,2 +1,4 @@
 graft tests
-global-exclude *.py[cod] __pycache__ .DS_Store
+prune javascript
+prune docs
+global-exclude *.py[cod] __pycache__ .DS_Store node_modules

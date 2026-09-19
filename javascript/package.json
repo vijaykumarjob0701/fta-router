@@ -1,0 +1,59 @@
+{
+  "name": "fta-router",
+  "version": "0.1.0",
+  "description": "FT-first hybrid behavioural router: answer_small | rag | tools | escalate_large",
+  "license": "MIT",
+  "author": "Vijay Kumar <vijaykumarjob0701@gmail.com>",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "bin": {
+    "fta-router": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "routing",
+    "behavioural-router",
+    "llm",
+    "rag",
+    "tools",
+    "fine-tuning"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vijaykumarjob0701/fta-router.git",
+    "directory": "javascript"
+  },
+  "homepage": "https://github.com/vijaykumarjob0701/fta-router",
+  "bugs": {
+    "url": "https://github.com/vijaykumarjob0701/fta-router/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
+  }
+}

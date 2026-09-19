@@ -1,0 +1,52 @@
+# Trusted Publisher / OIDC upload. This workflow does not store an npm token.
+#
+# Before tag-triggered publishes succeed, the project owner must:
+#   1. Bootstrap the package once (local `npm publish` with a granular token)
+#   2. Add a Trusted Publisher on npmjs.com for this repository
+# See docs/MULTI_LANGUAGE.md.
+#
+# Suggested Trusted Publisher fields:
+#   Organization or user: vijaykumarjob0701
+#   Repository:           fta-router
+#   Workflow filename:    js-publish.yml
+#   Environment:          npm
+#
+# Do not add an NPM_TOKEN secret to this repository for routine publishes.
+
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - "js-v*"
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Upload to npm
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: javascript
+    environment:
+      name: npm
+      url: https://www.npmjs.com/package/fta-router
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.14"
+          registry-url: "https://registry.npmjs.org"
+      - name: Require npm CLI 11.5.1+ for trusted publishing
+        run: npm install -g npm@11.5.1
+      - name: Install
+        run: npm ci
+      - name: Test
+        run: npm test
+      - name: Build
+        run: npm run build
+      - name: Publish (OIDC)
+        run: npm publish --access public
