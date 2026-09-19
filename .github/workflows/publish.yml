@@ -11,7 +11,8 @@
 #   Workflow:   publish.yml
 #   Environment: pypi
 #
-# Do not add a PYPI_API_TOKEN secret to this repository unless you
+# JavaScript releases use the js-v* tag prefix (see js-publish.yml) so they
+# do not match this v* filter. Do not add a PYPI_API_TOKEN secret unless you
 # intentionally choose token publishing instead of Trusted Publishing.
 
 name: Publish to PyPI

@@ -32,6 +32,11 @@ env/
 *.swp
 .DS_Store
 
+# JavaScript / TypeScript package
+node_modules/
+javascript/dist/
+*.tsbuildinfo
+
 # Local training artefacts (never commit checkpoints)
 outputs/
 results/
