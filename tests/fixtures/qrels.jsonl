@@ -1,0 +1,2 @@
+{"query_id": "q1", "query": "What failed in yesterday's payments incident according to our runbook?", "primary_action": "rag", "split": "eval", "relevant_docs": ["runbook"]}
+{"query_id": "q2", "query": "Who owns the search SLA in our Confluence wiki?", "primary_action": "rag", "split": "eval", "relevant_docs": ["owners"]}

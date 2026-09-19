@@ -1,0 +1,39 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Packaging
+build/
+dist/
+*.egg-info/
+src/*.egg-info/
+*.egg
+.eggs/
+
+# Test / lint
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.tox/
+
+# Virtualenvs / local
+.venv/
+venv/
+env/
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Local training artefacts (never commit checkpoints)
+outputs/
+results/
+*.pt
+*.bin

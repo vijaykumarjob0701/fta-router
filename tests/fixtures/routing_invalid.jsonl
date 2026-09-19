@@ -1,0 +1,2 @@
+{"id": "bad-001", "query": "Need the latest SLA", "primary_action": "rag", "needs_rag": false, "needs_tools": false, "reasoning_level": "low", "rationale": "Missing retrieval flag.", "domain": "company_current"}
+{"id": "bad-001", "query": "", "primary_action": "teleport", "needs_rag": "yes", "needs_tools": 1, "reasoning_level": "extreme", "rationale": "", "domain": "outer_space"}
